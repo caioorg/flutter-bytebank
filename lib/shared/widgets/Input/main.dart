@@ -21,10 +21,9 @@ class Input extends StatelessWidget {
         border: OutlineInputBorder(borderSide: BorderSide()),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: new FocusNode().hasFocus
-                ? Color(0xFF1692CE)
-                : Color(0xFF1692CE),
-          ),
+              color: new FocusNode().hasFocus
+                  ? Colors.green[700]
+                  : Colors.green[900]),
         ),
       ),
     );

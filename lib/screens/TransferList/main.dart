@@ -15,9 +15,20 @@ class TransferList extends StatefulWidget {
 
 class _TransferListState extends State<TransferList> {
   _onRedirectNewRegisterTransfer(context) {
-    final Future result = push(context, RegisterTransfer());
+    final Future<Transfer> future = Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => RegisterTransfer(),
+      ),
+    );
 
-    result.then((value) => widget._transfers.add(value));
+    future.then((value) {
+      if (value != null) {
+        setState(() {
+          widget._transfers.add(value);
+        });
+      }
+    });
   }
 
   @override
@@ -29,6 +40,7 @@ class _TransferListState extends State<TransferList> {
       body: ListView.builder(
         padding: EdgeInsets.all(8),
         itemCount: widget._transfers.length,
+        shrinkWrap: true,
         itemBuilder: (context, index) {
           final item = widget._transfers[index];
           return TransferItem(item);

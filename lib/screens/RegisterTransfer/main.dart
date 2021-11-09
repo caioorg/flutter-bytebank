@@ -16,6 +16,7 @@ class RegisterTransfer extends StatelessWidget {
 
     if (accountNumber != null && value != null) {
       final register = Transfer(value, accountNumber);
+
       if (register.accNumber != null && register.price != null) {
         Navigator.pop(context, register);
       }
@@ -28,30 +29,32 @@ class RegisterTransfer extends StatelessWidget {
       appBar: AppBar(
         title: Text('Register Transfer'),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Input(
-              'Number Account',
-              icon: Icon(Icons.person),
-              controller: _controllerFieldNumberAccount,
-              type: TextInputType.number,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Input(
-              'Price',
-              icon: Icon(
-                Icons.monetization_on,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Input(
+                'Number Account',
+                icon: Icon(Icons.person),
+                controller: _controllerFieldNumberAccount,
+                type: TextInputType.number,
               ),
-              controller: _controllerFieldNumberValue,
-              type: TextInputType.number,
             ),
-          ),
-          Button('Confirme', () => _onSubmit(context))
-        ],
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Input(
+                'Price',
+                icon: Icon(
+                  Icons.monetization_on,
+                ),
+                controller: _controllerFieldNumberValue,
+                type: TextInputType.number,
+              ),
+            ),
+            Button('Confirme', () => _onSubmit(context))
+          ],
+        ),
       ),
     );
   }
